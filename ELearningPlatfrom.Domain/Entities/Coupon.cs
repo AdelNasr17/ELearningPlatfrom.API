@@ -1,11 +1,17 @@
 ﻿
 
+using System.ComponentModel.DataAnnotations;
+
 namespace ELearningPlatfrom.Domain.Entities
 {
     public class Coupon:BaseEntity
     {
-        public string Code { get; set; } = default!;
+        [Required]
+        public string Code { get; set; } = default!;// //Unique
+        [Required]
         public decimal DiscountPercent { get; set; }
+        public string CreateBy { get; set; }= default!;
+        [Required]
         public DateTime ExpiryDate { get; set; }
         public  bool IsActive { get; set; }
         public int MaxUsageCount { get; set; } = 1;

@@ -10,7 +10,7 @@ namespace ELearningPlatfrom.Domain.Entities
         public double ProgressPercent { get; set; }
         public bool IsCompleted { get; set; }=false;
         public DateTime LastWatchedDate { get; set; } = DateTime.UtcNow;
-
+        public int WatchCount { get; set; }
         public Guid StudentId { get; set; }//Fk(Users)
         public Guid VideoId { get; set; }//FK(Video)
 

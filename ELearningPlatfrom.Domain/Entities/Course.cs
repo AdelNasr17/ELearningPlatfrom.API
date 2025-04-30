@@ -1,12 +1,17 @@
 ﻿
 
+using System.ComponentModel.DataAnnotations;
+
 namespace ELearningPlatfrom.Domain.Entities
 {
     public class Course:BaseEntity
     {
+        [Required]
         public string Title { get; set; } = default!;
         public string Description { get; set; } = default!;
         public decimal Price { get; set; }
+        public string? ThumbnailUrl { get; set; }
+        public bool HasCertificate { get; set; } = false;
         public bool IsPublished { get; set; }=false;
         public Guid TeacherId { get; set; } = default!;//FK (Users)
 
