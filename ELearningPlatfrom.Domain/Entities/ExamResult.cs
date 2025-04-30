@@ -13,7 +13,7 @@ namespace ELearningPlatfrom.Domain.Entities
 
         public int AttemptNumber { get; set; } = 1; // The attempt number for the exam
 
-        public bool IsPassed { get; set; } // Indicates if the exam was passed
+        public bool IsPassed { get; set; } = false; // Indicates if the exam was passed
 
         public Guid EnrollmentId { get; set; } // Foreign key referencing the Enrollment
 

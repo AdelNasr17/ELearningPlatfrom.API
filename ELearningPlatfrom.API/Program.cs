@@ -1,4 +1,7 @@
 
+using ELearningPlatfrom.Infrastructure.Persistence.Data.Contexts;
+using Microsoft.EntityFrameworkCore;
+
 namespace ELearningPlatfrom.API
 {
     public class Program
@@ -7,30 +10,38 @@ namespace ELearningPlatfrom.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            
+            #region  Add services to the container.
+            builder.Services.AddControllers(); // Adds services for controllers to the DI container
 
-            builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            // Learn more about configuring Swagger/OpenAPI 
+            builder.Services.AddEndpointsApiExplorer(); // Adds support for API endpoint exploration
+            builder.Services.AddSwaggerGen(); // Adds Swagger generation for API documentation
 
-            var app = builder.Build();
+            // Configure the DbContext to use SQL Server with the connection string from configuration
+            builder.Services.AddDbContext<AppDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")); // Use SQL Server with the specified connection string
+            });
 
-            // Configure the HTTP request pipeline.
+            #endregion
+            var app = builder.Build(); // Build the application
+
+            #region  Configure the HTTP request pipeline.
+
             if (app.Environment.IsDevelopment())
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
+                app.UseSwagger(); // Enable Swagger in development mode
+                app.UseSwaggerUI(); // Enable the Swagger UI
             }
 
-            app.UseHttpsRedirection();
+            app.UseHttpsRedirection(); // Redirect HTTP requests to HTTPS
+            app.UseAuthorization(); // Enable authorization middleware
 
-            app.UseAuthorization();
+            app.MapControllers(); // Map attribute-routed controllers
 
-
-            app.MapControllers();
-
-            app.Run();
+            app.Run(); // Run the application 
+            #endregion
         }
     }
 }

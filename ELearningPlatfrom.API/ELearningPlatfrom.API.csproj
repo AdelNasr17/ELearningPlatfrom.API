@@ -7,11 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.15">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ELearningPlatfrom.Application\ELearningPlatfrom.Application.csproj" />
+    <ProjectReference Include="..\ELearningPlatfrom.Infrastructure\ELearningPlatfrom.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
