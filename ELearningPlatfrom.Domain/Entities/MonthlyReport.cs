@@ -4,17 +4,22 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ELearningPlatfrom.Domain.Entities
 {
-    public class MonthlyReport:BaseEntity
+    public class MonthlyReport : BaseEntity
     {
-        [Range(1,12)]
-        public int Month { get; set; }
-        public int Year { get; set; }
-        public int NewStudentsCount { get; set; }
-        public decimal TotalEarnings { get; set; }
-        public bool IsSentToTeacher { get; set; }=false;
+        [Range(1, 12, ErrorMessage = "Month must be between 1 and 12.")] // Validates that Month is between 1 and 12
+        public int Month { get; set; } // Month of the report (1 for January, 12 for December)
 
-        public Guid TeacherId { get; set; }//FK(Users)
+        public int Year { get; set; } // Year of the report
 
-        public User Teacher { get; set; } = null!;
+        public int NewStudentsCount { get; set; } // Number of new students enrolled in the month
+
+        public decimal TotalEarnings { get; set; } // Total earnings for the month
+
+        public bool IsSentToTeacher { get; set; } = false; // Indicates if the report has been sent to the teacher
+
+        public Guid TeacherId { get; set; } // Foreign key referencing the Teacher (User )
+
+        // Navigation properties
+        public User Teacher { get; set; } = null!; // The teacher associated with the report
     }
 }
