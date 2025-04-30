@@ -9,8 +9,6 @@ namespace ELearningPlatfrom.Domain.Entities
         public DateTime EnrollmentDate { get; set; }=DateTime.UtcNow;
         public PaymentStatus PaymentStatus { get; set; } = default!;//Pending - Paid - Failed
         public decimal? PaymentAmount { get; set; }
-        public DateTime? CompletionDate { get; set; }
-        public decimal? FinalScore { get; set; }
         public string? FeedBack {  get; set; }
         public Guid StudentId { get; set; }//Fk(Users)
         public Guid CourseId { get; set; }//Fk(Courses)
@@ -19,5 +17,6 @@ namespace ELearningPlatfrom.Domain.Entities
         public Course Course { get; set; } = null!;
         public User Student { get; set; } = null!;
         public Certificate Certificate { get; set; } = null!;
+        public ICollection<ExamResult> ExamResults { get; set; } = [];
     }
 }

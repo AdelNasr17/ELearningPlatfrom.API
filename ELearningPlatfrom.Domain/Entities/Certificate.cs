@@ -1,9 +1,11 @@
 ﻿
 using ELearningPlatfrom.Domain.Entities.Shared;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
 namespace ELearningPlatfrom.Domain.Entities
 {
+    [Index(nameof(VerificationCode), IsUnique = true)]
     public class Certificate:BaseEntity
     {
         [Required]

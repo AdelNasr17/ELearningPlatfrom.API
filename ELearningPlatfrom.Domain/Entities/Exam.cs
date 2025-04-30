@@ -21,6 +21,7 @@ namespace ELearningPlatfrom.Domain.Entities
         //Navigations 
         public Course Course { get; set; } = null!;
         public ICollection<Question> Questions { get; set; } = [];
+        public ICollection<ExamResult> ExamResults { get; set; } = [];
 
     }
 }

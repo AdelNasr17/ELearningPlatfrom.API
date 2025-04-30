@@ -1,9 +1,11 @@
 ﻿
 
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
 namespace ELearningPlatfrom.Domain.Entities
 {
+    [Index(nameof(Code), IsUnique = true)]
     public class Coupon:BaseEntity
     {
         [Required]
